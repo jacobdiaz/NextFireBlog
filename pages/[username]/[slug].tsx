@@ -3,6 +3,8 @@ import { useDocumentData } from 'react-firebase-hooks/firestore';
 import PostContent from '../../components/PostContent';
 import styles from '../../styles/Posts.module.css';
 import MetaTags from '../../components/Metatags';
+import HeartBotton from '../../components/HeartButton';
+import AuthCheck from '../../components/AuthCheck';
 
 // Incremental Static Regeneration (ISR)
 // Params contains the orute parameters for pages using dynamic [routes].
@@ -67,6 +69,10 @@ export default function Post(props) {
         <p>
           <strong>{post.heartCount || 0} 🤍</strong>
         </p>
+
+        <AuthCheck>
+          <HeartBotton postRef={postRef} />
+        </AuthCheck>
       </aside>
     </main>
   );

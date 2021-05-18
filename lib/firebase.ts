@@ -9,6 +9,9 @@ export const fromMillis = firebase.firestore.Timestamp.fromMillis;
 //Creates a new timestamp from the server clock
 export const serverTimestamp = firebase.firestore.FieldValue.serverTimestamp;
 
+// Allows us to increment count without actually having to know the current count on the server
+export const increment = firebase.firestore.FieldValue.increment;
+
 const firebaseConfig = {
   apiKey: 'AIzaSyDvVc1r4_Umje4hrCgBcUU1oKwwlyttSvQ',
   authDomain: 'nextfire-e76f3.firebaseapp.com',
@@ -28,7 +31,7 @@ if (!firebase.apps.length) {
 export const auth = firebase.auth();
 export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 export const firestore = firebase.firestore();
-export const storage = firebase.storage();
+
 //! Query for target user document from a given username
 export async function getUserWithUsername(username) {
   // Query firestore into a given user
@@ -53,3 +56,10 @@ export function postToJSON(doc) {
     updatedAt: data?.updatedAt.toMillis() || 0,
   };
 }
+
+
+// ! For Images
+export const storage = firebase.storage();
+// this is a special firebase event we can listen to tell us the progress of a file upload
+export const STATE_CHANGED = firebase.storage.TaskEvent.STATE_CHANGED; 
+

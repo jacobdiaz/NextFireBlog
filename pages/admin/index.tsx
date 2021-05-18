@@ -75,7 +75,7 @@ function CreateNewPost() {
     await ref.set(data); // Push it to firestore!
     toast.success('Post Created!');
 
-    // router.push(`/admin/${slug}`);
+    router.push(`/admin/${slug}`);
   };
 
   return (
